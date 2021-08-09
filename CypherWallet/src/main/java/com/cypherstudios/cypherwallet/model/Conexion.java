@@ -1,7 +1,6 @@
 package com.cypherstudios.cypherwallet.model;
 
 import java.sql.*;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,8 +17,13 @@ public class Conexion {
     private final String allowPublicKey = "allowPublicKeyRetrieval=true";
 
     private final String BASE = "test";
-//    private final String JDBC_URL = "jdbc:mysql://localhost:3306/" + BASE + "?useServerPrepStmts=true&useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-    private final String JDBC_URL = "jdbc:mysql://localhost:3306/" + BASE + "?" + serverPrep + "&" + useSSL + "&" + timeZone + "&" + serverTimeZone + "&" + allowPublicKey;
+    private final String JDBC_URL = "jdbc:mysql://localhost:3306/"
+            + BASE + "?"
+            + serverPrep + "&"
+            + useSSL + "&"
+            + timeZone + "&"
+            + serverTimeZone + "&"
+            + allowPublicKey;
     private final String JDBC_USER = "root";
     private final String JDBC_PASSWORD = "admin";
 
