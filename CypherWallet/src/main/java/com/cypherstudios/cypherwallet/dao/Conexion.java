@@ -1,4 +1,4 @@
-package com.cypherstudios.cypherwallet.model;
+package com.cypherstudios.cypherwallet.dao;
 
 import java.sql.*;
 
