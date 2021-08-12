@@ -1,5 +1,6 @@
 package com.cypherstudios.cypherwallet.model;
 
+import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  */
 public abstract class Entrie {
 
-    protected int IdEntrie;
+    protected String idEntrie;
     protected Date date;
     protected double amount;
     protected String notes;
@@ -18,22 +19,30 @@ public abstract class Entrie {
     protected concept Concept;
 
     //Constructor de la clase, no se permite ningún attr vacio
-    public Entrie(int IdEntrie, Date date, double amount, String notes, supplier Supplier, concept Concept) {
-        this.IdEntrie = IdEntrie;
+    public Entrie(Date date, double amount, String notes, supplier Supplier, concept Concept) {
+        //this.idEntrie = idEntrie;
         this.date = date;
         this.amount = amount;
         this.notes = notes;
         this.Supplier = Supplier;
         this.Concept = Concept;
+
+        //El idEntrie tiene que generarlo con el método auxiliar generico
+    }
+    public Entrie(double amount, String notes) {
+        this.amount = amount;
+        this.notes = notes;
+
+        this.idEntrie = IdGenerator.setId(this);
     }
 
     //Getters & Stters
-    public int getIdEntrie() {
-        return IdEntrie;
+    public String getIdEntrie() {
+        return idEntrie;
     }
 
-    public void setIdEntrie(int IdEntrie) {
-        this.IdEntrie = IdEntrie;
+    public void setIdEntrie(String IdEntrie) {
+        this.idEntrie = IdEntrie;
     }
 
     public Date getDate() {
@@ -74,6 +83,11 @@ public abstract class Entrie {
 
     public void setConcept(concept Concept) {
         this.Concept = Concept;
+    }
+
+    @Override
+    public String toString() {
+        return "Entrie{" + "idEntrie=" + idEntrie + ", date=" + date + ", amount=" + amount + ", notes=" + notes + ", Supplier=" + Supplier + ", Concept=" + Concept + '}';
     }
 
 }

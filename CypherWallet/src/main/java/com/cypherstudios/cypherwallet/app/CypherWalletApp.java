@@ -1,6 +1,8 @@
 package com.cypherstudios.cypherwallet.app;
 
+import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
 import com.cypherstudios.cypherwallet.controller.CtrlInicio;
+import com.cypherstudios.cypherwallet.model.Entrie;
 
 public class CypherWalletApp {
 
