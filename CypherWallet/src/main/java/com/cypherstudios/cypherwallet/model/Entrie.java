@@ -1,6 +1,7 @@
 package com.cypherstudios.cypherwallet.model;
 
 import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
+import com.cypherstudios.cypherwallet.interfaces.IOperations;
 import java.util.Date;
 
 /**
@@ -8,41 +9,41 @@ import java.util.Date;
  *
  * @author Víctor Visús García
  */
-public abstract class Entrie {
+public class Entrie implements IOperations {
 
     protected String idEntrie;
     protected Date date;
     protected double amount;
     protected String notes;
 
-    protected supplier Supplier;
-    protected concept Concept;
+    protected Supplier supplier;
+    protected Concept concept;
 
-    //Constructor de la clase, no se permite ningún attr vacio
-    public Entrie(Date date, double amount, String notes, supplier Supplier, concept Concept) {
-        //this.idEntrie = idEntrie;
+    /**
+     * Constructor de la clase, no se permite ningún attr vacio
+     *
+     * El attr idEntrie es generado automáticamente mediante el método genérico
+     * "setId" de la clase auxiliar idGenerator
+     *
+     * @param date
+     * @param amount
+     * @param notes
+     * @param supplier
+     * @param concept
+     */
+    public Entrie(Date date, double amount, String notes, Supplier supplier, Concept concept) {
         this.date = date;
         this.amount = amount;
         this.notes = notes;
-        this.Supplier = Supplier;
-        this.Concept = Concept;
-
-        //El idEntrie tiene que generarlo con el método auxiliar generico
-    }
-    public Entrie(double amount, String notes) {
-        this.amount = amount;
-        this.notes = notes;
+        this.supplier = supplier;
+        this.concept = concept;
 
         this.idEntrie = IdGenerator.setId(this);
     }
 
-    //Getters & Stters
+    //Getters & Setters
     public String getIdEntrie() {
         return idEntrie;
-    }
-
-    public void setIdEntrie(String IdEntrie) {
-        this.idEntrie = IdEntrie;
     }
 
     public Date getDate() {
@@ -69,25 +70,31 @@ public abstract class Entrie {
         this.notes = notes;
     }
 
-    public supplier getSupplier() {
-        return Supplier;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSupplier(supplier Supplier) {
-        this.Supplier = Supplier;
+    public void setSupplier(Supplier Supplier) {
+        this.supplier = Supplier;
     }
 
-    public concept getConcept() {
-        return Concept;
+    public Concept getConcept() {
+        return concept;
     }
 
-    public void setConcept(concept Concept) {
-        this.Concept = Concept;
+    public void setConcept(Concept Concept) {
+        this.concept = Concept;
     }
 
     @Override
     public String toString() {
-        return "Entrie{" + "idEntrie=" + idEntrie + ", date=" + date + ", amount=" + amount + ", notes=" + notes + ", Supplier=" + Supplier + ", Concept=" + Concept + '}';
+        return "Los datos del movimiento son:"
+                + "\n- Identificador: " + idEntrie
+                + "\n- Fecha: " + date
+                + "\n- Importe: " + amount
+                + "\n- Notas: " + notes
+                + "ACREEDOR\n" + supplier
+                + "CONCEPTO\n" + concept;
     }
 
 }
