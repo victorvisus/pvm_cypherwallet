@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Víctor Visús García
  */
-public class IOperations extends ExtractFields {
+public class IOperations extends ExtractFields implements statementCreator {
 
     private PreparedStatement ps = null;
     private ResultSet rs = null;
@@ -32,7 +32,7 @@ public class IOperations extends ExtractFields {
      * @throws com.cypherstudios.cypherwallet.exceptions.WalletException
      * @throws java.sql.SQLException
      */
-    public <T> void addRecord(T record) throws WalletException, SQLException, IllegalArgumentException, IllegalAccessException {
+    public <T> void addRecord(T record, String tabla) throws WalletException, SQLException, IllegalArgumentException, IllegalAccessException {
         con = conection.getConexion();
 
         //Usa los métodos de la Clase padre ExtractFields para completar los datos de este método
@@ -52,25 +52,47 @@ public class IOperations extends ExtractFields {
 
         StringBuilder?????
          */
+        //VER COMO SE LE PASA LA TABLA, se podria encriptar con la clase auxiliar Hash.java????
         String campos = ""; //String en el que imprime los nombres de las tablas, que serán los mismo que los de los atributos
-        String valores = ""; //aunque no es muy necesario. String que imprime tantas interrogantes como atributos tiene el objeto, separadas por comas
-        sql = "INSERT INTO usuarios(" + campos
+        String valores = ""; //aunque no es muy necesario, pero muy recomendable. String que imprime tantas interrogantes como atributos tiene el objeto, separadas por comas
+        sql = "INSERT INTO" + tabla + "(" + campos
                 + ") VALUES(" + valores + ");";
 
-        /* */
+        ps = con.prepareStatement(sql);
+
+        /* CONSTRUCCIÓN DE CONSULTA PARAMETRIZADA
+        El uso de esta consulta evita la inyección de código, y mejora el
+        rendimiento entre un 20 y 30% */
         int pos = 0;
         String valor = null;
         /*
         Mediante un bucle,
-        1. Elige un "set" u otro dependiendo del tipo de dato del atributo.
-        2. Para la variable "pos" poner la posición en la que ha montado, en el
+        0. Ojo con los atributos tipo Object que puede tener el objeto que se le
+        envie al método. De ellos, posiblemente, solo habra que extraer el ID
+        1. Para la variable "pos" poner la posición en la que ha montado, en el
         String "campos", los atributos de la sentencia SQL. Para ello habrá que
         leer en que posición estan en el Array "nameFields" y sumarle 1 (la
         posición empieza en 0)
-        3. Para "valor", deberá hacer un casting dependiendo del tipo de la
+        2. Para "valor", deberá hacer un casting dependiendo del tipo de la
         variable
+        3A. Hacer casting a String de todos los valores de las variables, y usar
+        setString
+        ó
+        3B. Elige un "set" u otro dependiendo del tipo de dato del atributo.
+        if(tipo_dato = int) {
+            ps.setInt(pos, Integer.parseInt(valor);
+        } else if (tipo_dato = Double) {
+            ps.setDouble(pos, Double.parseDouble(valor));
+        } else if (tipo_dato = Date) {
+            ******* VER COMO HACERLO CORRECTAMENTE ******
+            Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+        } else {
+            ps.setString(pos, valor);
+        }
          */
         ps.setString(pos, valor);
+        ps.setInt(pos, Integer.parseInt(valor));
+        ps.setDouble(pos, Double.parseDouble(valor));
 //        ps.setString(1, usr.getNickName());
 //        ps.setString(2, usr.getPassword());
 //        ps.setString(3, usr.getEmail());
