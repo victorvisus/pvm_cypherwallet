@@ -1,26 +1,29 @@
 package com.cypherstudios.cypherwallet.model;
 
 import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
-import com.cypherstudios.cypherwallet.interfaces.IOperations;
 
 /**
  *
  * @author Víctor Visús García
  */
-public class Concept implements IOperations {
+public class Concept {
 
     private String idConcept;
     private String nameConcept;
     private String descConcept;
+    private ConceptTypes conceptType;
 
     private Category category;
 
     /**
      * Constructor
+     *
+     * VER COMO HACER PARA ASIGNAR EL VALOR AL ATTR conceptType
      */
-    public Concept(String nameConcept, String descConcept, Category category) {
+    public Concept(String nameConcept, String descConcept, ConceptTypes conceptTypes, Category category) {
         this.nameConcept = nameConcept;
         this.descConcept = descConcept;
+        this.conceptType = conceptTypes;
         this.category = category;
 
         this.idConcept = IdGenerator.setId(this);
@@ -47,6 +50,18 @@ public class Concept implements IOperations {
         this.descConcept = descConcept;
     }
 
+    /**
+     *
+     * @return : nombre manejable del tipo, un String
+     */
+    public String getConceptType() {
+        return conceptType.getTipo();
+    }
+
+    public void setConceptType(ConceptTypes conceptType) {
+        this.conceptType = conceptType;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -61,6 +76,7 @@ public class Concept implements IOperations {
                 + "\n- Identificador: " + idConcept
                 + "\n- Nombre: " + nameConcept
                 + "\n- Descripción: " + descConcept
+                + "\n- Tipo de Gasto: " + conceptType.getTipo()
                 + "\nCATEGORIA\n" + category;
     }
 

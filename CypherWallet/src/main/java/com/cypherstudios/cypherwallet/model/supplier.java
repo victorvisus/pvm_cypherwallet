@@ -1,13 +1,12 @@
 package com.cypherstudios.cypherwallet.model;
 
 import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
-import com.cypherstudios.cypherwallet.interfaces.IOperations;
 
 /**
  *
  * @author Victor
  */
-public class Supplier implements IOperations {
+public class Supplier {
 
     private String idSupplier;
     private String nameSupplier;

@@ -1,13 +1,13 @@
 package com.cypherstudios.cypherwallet.model;
 
 import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
-import com.cypherstudios.cypherwallet.interfaces.IOperations;
+import com.cypherstudios.cypherwallet.dao.IOperations;
 
 /**
  *
  * @author Victor
  */
-public class Category implements IOperations {
+public class Category {
 
     private String idCategory;
     private String nameCategory;

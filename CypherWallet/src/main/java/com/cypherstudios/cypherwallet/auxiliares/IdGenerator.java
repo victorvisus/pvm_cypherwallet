@@ -75,13 +75,11 @@ public class IdGenerator {
     }
 
     /**
-     * Método que establece la ID del Acreedor (Supplier).
-     *
-     * <ul>
-     * <li>1. Establece el prefijo del ID, dependiendo del tipo de objeto que le
+     * Método que establece la ID del Acreedor (Supplier).<ul>
+     * <li>1.Establece el prefijo del ID, dependiendo del tipo de objeto que le
      * llegue</li>
-     * <li>2. Realiza una consulta COUNT a la tabla que corresponda en la base
-     * de datos para extraer el nº de registros que existen</li>
+     * <li>2.Realiza una consulta COUNT a la tabla que corresponda en la base de
+     * datos para extraer el nº de registros que existen</li>
      * <li>3. Concatena la constante idPrefix con el resultado de la consulta,
      * sumandole 1 al resultado de la consulta</li>
      * <li>4. Valida que el ID resultante no exista en la tabla correspondiente
@@ -90,6 +88,9 @@ public class IdGenerator {
      *
      * ---- MIRAR DE PONERLO EN ALGUNA INTERFACE, p.ej. interface IAux
      *
+     * @param <T>
+     * @param ob
+     * @return
      */
     public static <T> String setId(T ob) {
         String idPrefix = "";

@@ -1,7 +1,6 @@
 package com.cypherstudios.cypherwallet.model;
 
 import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
-import com.cypherstudios.cypherwallet.interfaces.IOperations;
 import java.util.Date;
 
 /**
@@ -9,7 +8,7 @@ import java.util.Date;
  *
  * @author Víctor Visús García
  */
-public class Entrie implements IOperations {
+public class Entrie {
 
     protected String idEntrie;
     protected Date date;
@@ -19,24 +18,28 @@ public class Entrie implements IOperations {
     protected Supplier supplier;
     protected Concept concept;
 
+    protected Accountant accountant;
+
     /**
      * Constructor de la clase, no se permite ningún attr vacio
-     *
-     * El attr idEntrie es generado automáticamente mediante el método genérico
-     * "setId" de la clase auxiliar idGenerator
      *
      * @param date
      * @param amount
      * @param notes
      * @param supplier
      * @param concept
+     * @param accountant
+     *
+     * El attr idEntrie es generado automáticamente mediante el método genérico
+     * "setId" de la clase auxiliar idGenerator
      */
-    public Entrie(Date date, double amount, String notes, Supplier supplier, Concept concept) {
+    public Entrie(Date date, double amount, String notes, Supplier supplier, Concept concept, Accountant accountant) {
         this.date = date;
         this.amount = amount;
         this.notes = notes;
         this.supplier = supplier;
         this.concept = concept;
+        this.accountant = accountant;
 
         this.idEntrie = IdGenerator.setId(this);
     }
@@ -86,15 +89,25 @@ public class Entrie implements IOperations {
         this.concept = Concept;
     }
 
+    public Accountant getAccountant() {
+        return accountant;
+    }
+
+    public void setAccountant(Accountant accountant) {
+        this.accountant = accountant;
+    }
+
     @Override
     public String toString() {
-        return "Los datos del movimiento son:"
+        return "+++++++++++ DETALLES DEL REGISTRO +++++++++++"
+                + "\nLos datos del movimiento son:"
                 + "\n- Identificador: " + idEntrie
                 + "\n- Fecha: " + date
                 + "\n- Importe: " + amount
                 + "\n- Notas: " + notes
-                + "ACREEDOR\n" + supplier
-                + "CONCEPTO\n" + concept;
+                + "\nACREEDOR\n" + supplier
+                + "\nCONCEPTO\n" + concept
+                + "\nCUENTA\n" + accountant;
     }
 
 }
