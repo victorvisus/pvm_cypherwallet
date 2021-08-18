@@ -6,8 +6,8 @@ package com.cypherstudios.cypherwallet.dao;
  */
 interface statementCreator {
 
-    public static String insertSQL(String[] nameFields, Object[] valueFields, Object[] typesFields) {
-        String sql = null;
+    public static String createSQL(String sql, String[] nameFields, Object[] valueFields, Object[] typesFields) {
+
 
         return sql;
     }
