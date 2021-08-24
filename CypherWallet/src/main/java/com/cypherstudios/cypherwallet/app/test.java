@@ -3,6 +3,7 @@ package com.cypherstudios.cypherwallet.app;
 import com.cypherstudios.cypherwallet.exceptions.WalletException;
 import com.cypherstudios.cypherwallet.dao.IOperations;
 import com.cypherstudios.cypherwallet.model.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

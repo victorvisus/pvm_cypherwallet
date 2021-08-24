@@ -49,7 +49,7 @@ public class Accountant {
 
     @Override
     public String toString() {
-        return "Los datos del movimiento son:"
+        return "\nLos datos de la cuenta son:"
                 + "\n- Identificador: " + idAccountant
                 + "\n- Nombre de la cuenta: " + nameAccountant
                 + "\n- Descripción: " + descAccountant

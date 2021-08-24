@@ -50,7 +50,7 @@ public class Supplier {
 
     @Override
     public String toString() {
-        return "Los datos del acreedor son:"
+        return "\nLos datos del acreedor son:"
                 + "\n- Identificador: " + idSupplier
                 + "\n- Nombre: " + nameSupplier
                 + "\n- Notas: " + notes;

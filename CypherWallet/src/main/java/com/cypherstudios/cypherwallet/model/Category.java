@@ -43,7 +43,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Los datos de la categoría son:"
+        return "\nLos datos de la categoría son:"
                 + "\n- Identificador: " + idCategory
                 + "\n- Nombre: " + nameCategory
                 + "\n- Descripción: " + descCategory;

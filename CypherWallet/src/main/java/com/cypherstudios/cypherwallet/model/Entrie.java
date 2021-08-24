@@ -1,6 +1,7 @@
 package com.cypherstudios.cypherwallet.model;
 
 import com.cypherstudios.cypherwallet.auxiliares.IdGenerator;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -35,6 +36,7 @@ public class Entrie {
      */
     public Entrie(Date date, double amount, String notes, Supplier supplier, Concept concept, Accountant accountant) {
         this.date = date;
+
         this.amount = amount;
         this.notes = notes;
         this.supplier = supplier;
@@ -102,7 +104,7 @@ public class Entrie {
         return "+++++++++++ DETALLES DEL REGISTRO +++++++++++"
                 + "\nLos datos del movimiento son:"
                 + "\n- Identificador: " + idEntrie
-                + "\n- Fecha: " + date
+                + "\n- Fecha: " + new SimpleDateFormat("dd-MM-yyyy").format(date)
                 + "\n- Importe: " + amount
                 + "\n- Notas: " + notes
                 + "\nACREEDOR\n" + supplier
