@@ -72,7 +72,7 @@ public class Concept {
 
     @Override
     public String toString() {
-        return "Los datos del Concepto son:"
+        return "\nLos datos del Concepto son:"
                 + "\n- Identificador: " + idConcept
                 + "\n- Nombre: " + nameConcept
                 + "\n- Descripción: " + descConcept
