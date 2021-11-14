@@ -72,7 +72,8 @@ public class IOperations extends ExtractFields implements statementCreator {
         1. Para la variable "pos" poner la posición en la que ha montado, en el
         String "campos", los atributos de la sentencia SQL. Para ello habrá que
         leer en que posición estan en el Array "nameFields" y sumarle 1 (la
-        posición empieza en 0)
+        posición empieza en 0) o que lea el String sql y busque las ? y devuelva
+        el número de ? que es.
         2. Para "valor", deberá hacer un casting dependiendo del tipo de la
         variable
         3A. Hacer casting a String de todos los valores de las variables, y usar
@@ -125,8 +126,9 @@ public class IOperations extends ExtractFields implements statementCreator {
      * @param <T>
      * @param record
      * @throws WalletException
+     * @throws java.lang.IllegalAccessException
      */
-    public void detRecord(Object record) throws WalletException, IllegalArgumentException, IllegalAccessException {
+    public <T> void detRecord(T record) throws WalletException, IllegalArgumentException, IllegalAccessException {
 
         if (record != null) {
             //System.out.println(record.toString());
