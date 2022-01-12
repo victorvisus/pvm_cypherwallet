@@ -134,8 +134,11 @@ public class IOperations extends ExtractFields implements statementCreator {
             //System.out.println(record.toString());
             JOptionPane.showMessageDialog(null, record.toString(), "Información del objeto", JOptionPane.INFORMATION_MESSAGE);
 
+            // Extrae el nombre de los atributos del objeto
             String[] namesFields = extractNameFields(record);
+            // Extrae los valores de los atributos
             Object[] valuesFields = extractValueFields(record);
+            // Extrae el tipo de dato de cada atributo (int, String, Supplier, Concept...)
             Object[] typesFields = extractTypeFields(record);
 
             for (int i = 0; i < valuesFields.length; i++) {

@@ -60,6 +60,7 @@ public class ExtractFields {
         for (int i = 0; i < fields.length; i++) {
             // Establece que el indicador accesible de este objeto sea legible
             fields[i].setAccessible(true);
+            // Añade al array de String nameFields el name del objeto i
             namesFields[i] = fields[i].getName();
         }
         return namesFields;
